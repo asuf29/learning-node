@@ -34,3 +34,23 @@ fetch("https://jsonplaceholder.typicode.com/users")
             .then((data) => console.log("post 2 uploaded", data));
     });
 });
+
+async function getData() {
+    const users = await (
+        await fetch("https://jsonplaceholder.typicode.com/users")
+    ).json();
+
+    const post1 = await (
+        await fetch("https://jsonplaceholder.typicode.com/post/1")
+    ).json();
+
+    const post2 = await (
+        await fetch("https://jsonplaceholder.typicode.com/post/2")
+    ).json();
+
+    console.log("users", users);
+    console.log("post 1", post1);
+    console.log("post 2", post2);
+}
+
+getData();
