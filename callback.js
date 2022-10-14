@@ -35,7 +35,28 @@ fetch("https://jsonplaceholder.typicode.com/users")
     });
 });
 
-async function getData() {
+// async function getData() {
+//     const users = await (
+//         await fetch("https://jsonplaceholder.typicode.com/users")
+//     ).json();
+
+//     const post1 = await (
+//         await fetch("https://jsonplaceholder.typicode.com/post/1")
+//     ).json();
+
+//     const post2 = await (
+//         await fetch("https://jsonplaceholder.typicode.com/post/2")
+//     ).json();
+
+//     console.log("users", users);
+//     console.log("post 1", post1);
+//     console.log("post 2", post2);
+// }
+
+// getData();
+
+//anonim fonksiyon oluşturduk
+(async () => {
     const users = await (
         await fetch("https://jsonplaceholder.typicode.com/users")
     ).json();
@@ -51,6 +72,4 @@ async function getData() {
     console.log("users", users);
     console.log("post 1", post1);
     console.log("post 2", post2);
-}
-
-getData();
+})();
