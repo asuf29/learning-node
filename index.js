@@ -1,4 +1,8 @@
-import slugify from "slugify";
+import {hello, sum, subtract, text, user, users} from "./my-module.js";
 
-const title = slugify("some string");
-console.log(title);
+console.log(sum(2, 4)); 
+console.log(subtract(29,20));
+console.log(text);
+console.log(user);
+console.log(users);
+hello("Alp");
