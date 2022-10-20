@@ -94,16 +94,83 @@ import axios from "axios";
 //   console.log("post 2", post2);
 // })();
 
-const getComments = (number) => {
-  return new Promise((resolve, reject) => {
-    if (number === 1) {
-      resolve("comments");
-    }
+//Promise
+// const getComments = (number) => {
+//   return new Promise((resolve, reject) => {
+//     if (number === 1) {
+//       resolve("comments");
+//     }
 
-    reject("a problem has occurred");
+//     reject("a problem has occurred");
+//   });
+// };
+
+// getComments(2)
+//   .then((data) => console.log(data))
+//   .catch((e) => console.log(e));
+
+const getUsers = () => {
+  return new Promise(async (resolve, reject) => {
+    const { data } = await axios("https://jsonplaceholder.typicode.com/users");
+
+    resolve(data);
   });
 };
 
-getComments(2)
-  .then((data) => console.log(data))
-  .catch((e) => console.log(e));
+const getPost = (post_id) => {
+  return new Promise(async (resolve, reject) => {
+    const { data } = await axios(
+      "https://jsonplaceholder.typicode.com/post/" + post_id
+    );
+
+    resolve(data);
+  });
+};
+
+//sıralı değil
+// getUsers()
+//   .then((data) => console.log(data))
+//   .catch((e) => console.log(e));
+
+// getPost(1)
+//   .then((data) => console.log(data))
+//   .catch((e) => console.log(e));
+
+//sıraya koymak istersek ananim fonk yazabiliriz
+// (async () => {
+//   await getUsers()
+//     .then((data) => console.log(data))
+//     .catch((e) => console.log(e));
+
+//   await getPost(1)
+//     .then((data) => console.log(data))
+//     .catch((e) => console.log(e));
+// })();
+
+//then ve catch'den de kurtulamak istersek
+// (async () => {
+//   const users = await getUsers();
+
+//   const post = await getPost(1);
+
+//   console.log(users);
+//   console.log(post);
+// })();
+
+//hata yakalama
+(async () => {
+  try {
+    const users = await getUsers();
+    const post = await getPost(1);
+
+    console.log(users);
+    console.log(post);
+  } catch (e) {
+    console.log(e);
+  }
+})();
+
+//birden fazla sıralı çalıştırmak istediğimiz promise dizisi varsa
+Promise.all([getUsers(), getPost(1)])
+  .then(console.log)
+  .catch(console.log);
