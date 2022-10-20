@@ -20,21 +20,21 @@
 import fetch from "node-fetch";
 import axios from "axios";
 
-fetch("https://jsonplaceholder.typicode.com/users")
-  .then((data) => data.json())
-  .then((users) => {
-    console.log("users uploaded", users);
+// fetch("https://jsonplaceholder.typicode.com/users")
+//   .then((data) => data.json())
+//   .then((users) => {
+//     console.log("users uploaded", users);
 
-    fetch("https://jsonplaceholder.typicode.com/posts/1")
-      .then((data) => data.json())
-      .then((post) => {
-        console.log("post 1 uploaded", post);
+//     fetch("https://jsonplaceholder.typicode.com/posts/1")
+//       .then((data) => data.json())
+//       .then((post) => {
+//         console.log("post 1 uploaded", post);
 
-        fetch("https://jsonplaceholder.typicode.com/posts/2")
-          .then((data) => data.json())
-          .then((data) => console.log("post 2 uploaded", data));
-      });
-  });
+//         fetch("https://jsonplaceholder.typicode.com/posts/2")
+//           .then((data) => data.json())
+//           .then((data) => console.log("post 2 uploaded", data));
+//       });
+//   });
 
 // async function getData() {
 //     const users = await (
@@ -76,20 +76,34 @@ fetch("https://jsonplaceholder.typicode.com/users")
 // })();
 
 //yazdığım kodu fetch den axios a çeviriyorum
-(async () => {
-  const { data: users } = await axios(
-    "https://jsonplaceholder.typicode.com/users"
-  );
+// (async () => {
+//   const { data: users } = await axios(
+//     "https://jsonplaceholder.typicode.com/users"
+//   );
 
-  const { data: post1 } = await axios(
-    "https://jsonplaceholder.typicode.com/post/1"
-  );
+//   const { data: post1 } = await axios(
+//     "https://jsonplaceholder.typicode.com/post/1"
+//   );
 
-  const { data: post2 } = await axios(
-    "https://jsonplaceholder.typicode.com/post/2"
-  );
+//   const { data: post2 } = await axios(
+//     "https://jsonplaceholder.typicode.com/post/2"
+//   );
 
-  console.log("users", users);
-  console.log("post 1", post1);
-  console.log("post 2", post2);
-})();
+//   console.log("users", users);
+//   console.log("post 1", post1);
+//   console.log("post 2", post2);
+// })();
+
+const getComments = (number) => {
+  return new Promise((resolve, reject) => {
+    if (number === 1) {
+      resolve("comments");
+    }
+
+    reject("a problem has occurred");
+  });
+};
+
+getComments(2)
+  .then((data) => console.log(data))
+  .catch((e) => console.log(e));
