@@ -20,20 +20,20 @@
 import fetch from "node-fetch";
 
 fetch("https://jsonplaceholder.typicode.com/users")
-.then(data => data.json())
-.then((users) => {
+  .then((data) => data.json())
+  .then((users) => {
     console.log("users uploaded", users);
 
     fetch("https://jsonplaceholder.typicode.com/posts/1")
-        .then((data) => data.json())
-        .then((post) => { 
-            console.log("post 1 uploaded",post);
+      .then((data) => data.json())
+      .then((post) => {
+        console.log("post 1 uploaded", post);
 
-            fetch("https://jsonplaceholder.typicode.com/posts/2")
-            .then((data) => data.json())
-            .then((data) => console.log("post 2 uploaded", data));
-    });
-});
+        fetch("https://jsonplaceholder.typicode.com/posts/2")
+          .then((data) => data.json())
+          .then((data) => console.log("post 2 uploaded", data));
+      });
+  });
 
 // async function getData() {
 //     const users = await (
@@ -57,19 +57,19 @@ fetch("https://jsonplaceholder.typicode.com/users")
 
 //anonim fonksiyon oluşturduk
 (async () => {
-    const users = await (
-        await fetch("https://jsonplaceholder.typicode.com/users")
-    ).json();
+  const users = await (
+    await fetch("https://jsonplaceholder.typicode.com/users")
+  ).json();
 
-    const post1 = await (
-        await fetch("https://jsonplaceholder.typicode.com/post/1")
-    ).json();
+  const post1 = await (
+    await fetch("https://jsonplaceholder.typicode.com/post/1")
+  ).json();
 
-    const post2 = await (
-        await fetch("https://jsonplaceholder.typicode.com/post/2")
-    ).json();
+  const post2 = await (
+    await fetch("https://jsonplaceholder.typicode.com/post/2")
+  ).json();
 
-    console.log("users", users);
-    console.log("post 1", post1);
-    console.log("post 2", post2);
+  console.log("users", users);
+  console.log("post 1", post1);
+  console.log("post 2", post2);
 })();
