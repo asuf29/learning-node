@@ -18,6 +18,7 @@
 // });
 
 import fetch from "node-fetch";
+import axios from "axios";
 
 fetch("https://jsonplaceholder.typicode.com/users")
   .then((data) => data.json())
@@ -56,18 +57,37 @@ fetch("https://jsonplaceholder.typicode.com/users")
 // getData();
 
 //anonim fonksiyon oluşturduk
+// (async () => {
+//   const users = await (
+//     await fetch("https://jsonplaceholder.typicode.com/users")
+//   ).json();
+
+//   const post1 = await (
+//     await fetch("https://jsonplaceholder.typicode.com/post/1")
+//   ).json();
+
+//   const post2 = await (
+//     await fetch("https://jsonplaceholder.typicode.com/post/2")
+//   ).json();
+
+//   console.log("users", users);
+//   console.log("post 1", post1);
+//   console.log("post 2", post2);
+// })();
+
+//yazdığım kodu fetch den axios a çeviriyorum
 (async () => {
-  const users = await (
-    await fetch("https://jsonplaceholder.typicode.com/users")
-  ).json();
+  const { data: users } = await axios(
+    "https://jsonplaceholder.typicode.com/users"
+  );
 
-  const post1 = await (
-    await fetch("https://jsonplaceholder.typicode.com/post/1")
-  ).json();
+  const { data: post1 } = await axios(
+    "https://jsonplaceholder.typicode.com/post/1"
+  );
 
-  const post2 = await (
-    await fetch("https://jsonplaceholder.typicode.com/post/2")
-  ).json();
+  const { data: post2 } = await axios(
+    "https://jsonplaceholder.typicode.com/post/2"
+  );
 
   console.log("users", users);
   console.log("post 1", post1);
